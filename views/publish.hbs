@@ -7,6 +7,11 @@
     <title>Published Recipes</title>
 </head>
 <body>
-    
+    {{#each allRecipes}}
+    <img src="{{recipeImage}}" alt="">
+    <p>{{recipeIngredients}}</p>
+    <p>{{recipeName}}</p>
+    <p>{{recipeMacros}}</p>
+    {{/each}}
 </body>
 </html>

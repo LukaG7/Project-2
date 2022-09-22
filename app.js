@@ -1,3 +1,4 @@
+require('dotenv/config')
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -13,13 +14,14 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const { isAuthenticated, isNotAuthenticated } = require('./middlewares/auth.middlewares.js');
 const Recipe = require('./models/Recipe.models');
+const fileUploader = require("./config/cloudinary.config");
 
 
 
 // const indexRouter = require('./routes/index');
 // const usersRouter = require('./routes/users');
 
-mongoose.connect('mongodb://localhost/authExample')
+mongoose.connect(process.env.MONGODB_URI)
 .then(x => console.log('successfully connected to ' + x.connections[0].name))
 .catch(err => {
   console.log(err);
@@ -39,13 +41,12 @@ app.use(
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
       secure: process.env.NODE_ENV === 'production',
       httpOnly: true,
-      maxAge: 120000 // 120 * 1000 ms === 2 min
+      maxAge: 240000 // 240 * 1000 ms === 4 min
     },
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost/authExample'
-    })
-  })
-);
+      mongoUrl: process.env.MONGODB_URI,
+  })}
+  ))
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('dev'));
@@ -137,14 +138,21 @@ app.get('/account/recipes', (req, res, next) => {
   res.render('recipes.hbs')
 })
 
-app.post('/account/recipes', (req, res, next) => {
+app.post('/logout', (req, res, next) => {
+  req.session.destroy(err => {
+    if (err) next(err);
+    res.redirect('/');
+  });
+});
+
+app.post('/account/recipes',fileUploader.single('recipe-image'), (req, res, next) => {
   const myImage = req.body.recipeImage;
   const myIngredients = req.body.recipeIngredients;
   const myRecipeName = req.body.recipeName;
   const myMacros = req.body.recipeMacros;
 
   Recipe.create({
-    recipeImage: myImage,
+    recipeImage: req.file.path,
     recipeIngredients: myIngredients,
     recipeName: myRecipeName,
     recipeMacros: myMacros
@@ -158,7 +166,14 @@ app.post('/account/recipes', (req, res, next) => {
 })
 
 app.get('/account/recipes/publish', (req, res, next) => {
-  res.render('publish.hbs')
+  Recipe.find() 
+  .then(allRecipes => {
+    console.log(allRecipes)
+    res.render('publish.hbs', {allRecipes})
+  })
+  .catch(err => {
+    console.log(err)
+  })
 })
 
 app.get(`/account/:muscle`, async(req, res, next) => {
@@ -166,7 +181,7 @@ app.get(`/account/:muscle`, async(req, res, next) => {
   console.log(muscle)
   try{
     const muscleGroup = await axios.get(`https://api.api-ninjas.com/v1/exercises?muscle=${muscle}`, {headers: {
-        'X-API-Key': 'Tc1ngI4NyMOAhjkRQvLj/Q==7ySQLIlsJAowuAwI'
+        'X-API-Key': process.env.EXERCISE_API
     }})
     console.log(muscleGroup.data[0])
     res.render('muscle-details.hbs', {muscleGroup: muscleGroup.data})

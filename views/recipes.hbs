@@ -5,25 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipes</title>
+    <link rel="stylesheet" href="/stylesheets/recipes.css">
 </head>
 <body>
-    <h1>Recipes Post</h1>
-    <form action="/account/recipes" method="POST" class="form">
+    <h1 class="h1">Recipes Post</h1>
+    <form action="/account/recipes" method="POST" class="form" enctype="multipart/form-data">
  
-    <label>Image
-      <input type="text" name="recipeImage" />
+    <label class="image">Image
+      <input type="file" name="recipe-image"/>
     </label>
  
-    <label class="password">Ingredients
+    <label class="ingredients">Ingredients
       <input type="text" name="recipeIngredients"/>
     </label>
 
-    <label for="">Name
-        <input type="text" name="recipeName">
+    <label class="name" for="">Name
+        <input type="text" name="recipeName"/>
     </label>
 
-    <label for="">Macros
-        <input type="text" name="recipeMacros">
+    <label class="macros" for="">Macros
+        <input type="text" name="recipeMacros"/>
     </label>
 
  <div class="button">
