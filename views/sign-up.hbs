@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up</title>
+    <link rel="stylesheet" href="/stylesheets/sign-up.css">
+</head>
+<body>
+   <div id="form" class="form-div">
+  <h2>Sign-Up</h2>
+ 
+  <form action="/signup" method="POST" class="form">
+ 
+    <label> Email
+      <input type="email" name="email" placeholder="example@ironhack.com" />
+    </label>
+ 
+    <label class="password">Password
+      <input type="password" name="password" placeholder="********" />
+    </label>
+ <div class="button">
+  <button type="submit">Sign-up</button>
+ </div>
+ 
+    {{!-- {{#if errorMessage}}
+      <p class="error">{{errorMessage}}</p>
+    {{/if}} --}}
+  </form>
+</div>
+</body>
+</html>

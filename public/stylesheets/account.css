@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url("/images/login-background-img.jpg");
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+}
+
+a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+.hello {
+    display: flex;
+    justify-content: center;
+}
