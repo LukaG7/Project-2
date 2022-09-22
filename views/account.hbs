@@ -10,26 +10,30 @@
 <body>
     <div class="account-container">
         <div class="hello">
-         <h1>Hello {{email}}! Choose your muscle group!</h1>
+         <h1>Hello {{email}}!</h1>
+         <form class="recipes-form" action="/account/recipes">
+    <button>Recipes</button>
+  </form>
          <form class="logout-button" id="logout-form" action="/logout" method="POST">
     <button>Logout</button>
   </form>
+  
     </div>
     <div class="muscles">
-        <a href="/account/chest">Chest</a>
-        <a href='/account/biceps'>Biceps</a>
-        <a href="/account/triceps">Triceps</a>
-        <a href="/account/calves">Calves</a>
-        <a href="/account/forearms">Forearms</a>
-        <a href="/account/glutes">Glutes</a>
-        <a href="/account/hamstrings">Hamstrings</a>
-        <a href="/account/quadriceps">Quadriceps</a>
-        <a href="/account/lats">Lats</a>
-        <a href="/account/lower_back">Lower Back</a>
-        <a href="/account/middle_back">Mid Back</a>
-        <a href="/account/traps">Traps</a>
-        <a href="/account/abdominals">Abs</a>
-        <a href="/account/neck">Neck</a>
+        <a class="a-muscles" href="/account/chest">Chest</a>
+        <a class="a-muscles" href='/account/biceps'>Biceps</a>
+        <a class="a-muscles" href="/account/triceps">Triceps</a>
+        <a class="a-muscles" href="/account/calves">Calves</a>
+        <a class="a-muscles" href="/account/forearms">Forearms</a>
+        <a class="a-muscles" href="/account/glutes">Glutes</a>
+        <a class="a-muscles" href="/account/hamstrings">Hamstrings</a>
+        <a class="a-muscles" href="/account/quadriceps">Quadriceps</a>
+        <a class="a-muscles" href="/account/lats">Lats</a>
+        <a class="a-muscles" href="/account/lower_back">Lower Back</a>
+        <a class="a-muscles" href="/account/middle_back">Mid Back</a>
+        <a class="a-muscles" href="/account/traps">Traps</a>
+        <a class="a-muscles" href="/account/abdominals">Abs</a>
+        <a class="a-muscles" href="/account/neck">Neck</a>
     </div>
     </div>
     

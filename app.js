@@ -31,6 +31,7 @@ const app = express();
 
 app.set('views', __dirname + '/views');
 app.set('view engine', hbs);
+app.set('trust proxy', 1);
 
 app.use(
   session({

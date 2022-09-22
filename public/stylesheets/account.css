@@ -24,12 +24,13 @@ body {
 
 a {
     text-decoration: none;
-    color: white;
+    color: black;
     font-size: x-large;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-bottom: 20px;
     border-style: solid;
     width: 15vh;
+    background-color: rgb(231, 219, 202);
 }
 
 .hello {
@@ -45,4 +46,8 @@ a {
 
 .logout-button {
     text-align: right;
+}
+
+.recipes-form {
+    margin-right: 400px;
 }

@@ -5,13 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Published Recipes</title>
+    <link rel="stylesheet" href="/stylesheets/publish.css">
 </head>
 <body>
+    <h1>Published Recipes</h1>
     {{#each allRecipes}}
     <img src="{{recipeImage}}" alt="">
-    <p>{{recipeIngredients}}</p>
-    <p>{{recipeName}}</p>
-    <p>{{recipeMacros}}</p>
+         <p>Ingredients: {{recipeIngredients}}</p>
+        <p>Name: {{recipeName}}</p>
+        <p>Macros: {{recipeMacros}}</p>
     {{/each}}
+    
 </body>
 </html>
